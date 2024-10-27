@@ -1,0 +1,638 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+li{list-style:none}
+
+
+/* =============================================================================
+   My CSS
+   ========================================================================== */
+
+/* ---- base ---- */
+
+html,body{ 
+	width:100%;
+	height:100%;
+	background:#111;
+}
+
+html{
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font: normal 75% Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  position: fixed; /* Fix the body in place */
+}
+
+canvas{
+  display:block;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+  user-select: none; /* Standard property for compatibility */
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #171515;
+  z-index: -1;
+}
+
+
+/* ---- title styling ---- */
+
+.page-title {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%);
+  
+  color: #ffffff; /* Change color as needed */
+  font-size: 3em; /* Increase font size */
+  margin: 0; /* Remove default margin */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
+  text-align: center;
+}
+
+/* ---- navigation ---- */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* Make background transparent */
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center the list items horizontally */
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Add text shadow for better visibility */
+}
+
+nav a:hover {
+  color: #03aef7; /* Change color on hover */
+}
+
+body {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgb(3, 163, 153) 68%, rgba(255,25,25,1) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  padding-top: 60px; /* Adjust based on your navbar height */
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 100% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+      transform: translateX(1);
+  }
+
+  25% {
+      transform: translateX(-25%);
+  }
+
+  50% {
+      transform: translateX(-50%);
+  }
+
+  75% {
+      transform: translateX(-25%);
+  }
+
+  100% {
+      transform: translateX(1);
+  }
+}
+
+/* ---- white box styling ---- */
+
+.white-box {
+    position: fixed; /* Fixed position to keep it on the left */
+    top: 20px; /* Align to the top with a margin effect */
+    left: 20px; /* Add a left margin to create space from the left edge */
+    width: calc(30% - 40px); /* Width of the box (30% of the screen) minus the total margin */
+    height: calc(100% - 40px); /* Full height of the screen minus the total margin */
+    background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
+    z-index: 10; /* Ensure it appears above other elements */
+    border-radius: 15px; /* Curved edges */
+    padding: 20px; /* Padding inside the box */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border: 2px solid rgba(0, 162, 255, 0.8); /* Add blue border */
+    box-shadow: 0 0 15px rgba(0, 162, 255, 0.5); /* Add blue glow effect */
+    transition: box-shadow 0.3s ease, border 0.3s ease; /* Smooth transition */
+}
+
+/* ---- profile picture styling ---- */
+
+.pfp-container {
+    text-align: center; /* Center the profile picture */
+    margin-bottom: 10px; /* Space below the profile picture */
+}
+
+.pfp {
+    width: 200px; /* Set width of the profile picture */
+    height: 200px; /* Set height of the profile picture */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image covers the box */
+}
+
+/* ---- text container styling ---- */
+
+.bio-container {
+    display: flex; /* Use flexbox to align items side by side */
+    flex-direction: column; /* Stack items vertically */
+    color: #333; /* Text color */
+}
+
+/* ---- name title styling ---- */
+
+.name-title {
+    text-align: center; /* Center the name */
+    color: #333; /* Text color */
+    font-size: 2.5em; /* Font size */
+    margin-bottom: 10px; /* Margin above and below the title */
+    text-decoration: underline; /* Underline the name title */
+}
+.about-small-title {
+    font-size: 1.5em; /* Font size */
+    margin: 10px 0; /* Margin above and below the title */
+    text-decoration: underline; /* Underline the title */
+}
+
+/* ---- skills list styling ---- */
+.skills-list {
+    list-style-type: disc; /* Use disc bullet points */
+    padding-left: 20px; /* Add some padding to the left for better alignment */
+    text-align: left; /* Align text to the left */
+    color: #333; /* Text color */
+}
+
+/* Ensure that the global reset does not affect the skills list */
+.skills-list li {
+    list-style-type: disc; /* Ensure bullet points are displayed */
+}
+
+/* Add hover effect for skills list items */
+.skills-list li {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+.skills-list li:hover {
+    background-color: rgba(60, 132, 206, 0.3); /* Light background color on hover */
+    color: #03aef7; /* Change text color on hover */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* ---- bio container styling ---- */
+.bio-container {
+    display: flex; /* Use flexbox to align items side by side */
+    flex-direction: column; /* Stack items vertically */
+    color: #333; /* Text color */
+}
+
+/* ---- interests and hobbies container styling ---- */
+.interests-container, .hobbies-container {
+    width: 1%; /* Set width for each container to take full width */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+/* ---- about small title styling ---- */
+.about-small-title {
+    font-size: 1.5em; /* Font size */
+    margin: 0px 0; /* Margin above and below the title */
+    text-decoration: underline;
+    text-align: left; /* Underline the title */
+}
+
+/* ---- social media styling ---- */
+.social-media {
+    margin-top: 20px; /* Space above the social media section */
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox to align icons horizontally */
+    gap: 15px; /* Space between icons */
+}
+
+.social-link {
+    display: flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Center items vertically */
+}
+
+.social-icon {
+    width: 60px; /* Set width for the icons (3x the original size) */
+    height: 60px; /* Set height for the icons (3x the original size) */
+    border-radius: 15px; /* Add curved corners */
+}
+.social-link {
+
+    display: flex; /* Use flexbox to align icon and text */
+   
+}
+
+/* ---- navigation active link styling ---- */
+nav li.active a {
+    color: #03aef7; /* Change color for active link */
+    font-weight: bold; /* Make it bold */
+    text-decoration: underline; /* Underline the active link */
+}
+
+/* Add this CSS to style the pop-up */
+
+.popup.show {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make it visible */
+    animation: floatUp 0.5s ease forwards; /* Animation for floating up */
+}
+
+/* Keyframes for the floating up animation */
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, 100%); /* Start from below the screen */
+        opacity: 0; /* Start hidden */
+    }
+    100% {
+        transform: translate(-50%, -50%); /* End at the center */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.popup-image {
+    max-width: 50%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below the image */
+    border-radius: 10px; /* Optional: add rounded corners */
+}
+
+/* Add this CSS to style the close button */
+.close-popup {
+    background-color: #03aef7; /* Set the background color */
+    color: white; /* Set the text color */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add padding for better appearance */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 1em; /* Set font size */
+    transition: background-color 0.3s ease;
+    padding: 8px;
+    margin-top: 10px;
+  /* Smooth transition for hover effect */
+}
+
+/* Add hover effect for the close button */
+#close-popup:hover {
+    background-color: #0291b5; /* Darker shade for hover effect */
+}
+
+/* Add this CSS to style the rugby images */
+.rugby-image {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below the image */
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: add shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+
+/* Ensure the popup class allows for a grid layout */
+
+/* Add this CSS to style the active pop-up */
+.popup.active {
+    box-shadow: 0 0 15px rgba(0, 162, 255, 0.5); /* Add a glow effect */
+    border: 2px solid rgba(0, 162, 255, 0.8); /* Change border color */
+    transition: box-shadow 0.3s ease, border 0.3s ease; /* Smooth transition */
+}
+
+/* Add this CSS to style the active list item */
+.skills-list li.active {
+    background-color: rgba(60, 132, 206, 0.3); /* Light background color for active item */
+    color: #03aef7; /* Change text color for active item */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Update the popup styling */
+.popup {
+  position: fixed;
+  top: 50%;
+  right: -5%; /* Position it towards the right side of the screen */
+  transform: translateY(-50%); /* Center vertically */
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  border-radius: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  width: 40%; /* Adjust the width as needed */
+  max-height: 80vh; /* Limit the height to 80% of the viewport height */
+  overflow-y: auto; /* Allow vertical scrolling if content exceeds the height */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em; /* Slightly reduce the font size */
+  line-height: 1.6; /* Improve readability with increased line height */
+  text-align: justify; /* Justify the text for a cleaner look */
+}
+
+.popup h3 {
+  font-size: 1.4em;
+  color: #03aef7;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.popup p {
+  margin-bottom: 15px;
+}
+
+.popup a {
+  color: #03aef7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.popup a:hover {
+  text-decoration: underline;
+}
+
+.popup-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.rugby-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.rugby-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Adjust the show class to remove the transform */
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%); /* Keep it vertically centered */
+}
+
+/* Adjust the images in the popup */
+.popup-image, .rugby-image {
+  max-width: 70%; /* Reduce from 100% to 70% or any desired percentage */
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Adjust the rugby images grid */
+.rugby-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px;
+  width: 80%; /* Reduce the width of the grid container */
+  margin: 0 auto; /* Center the grid */
+}
+
+.rugby-image {
+  max-width: 100%; /* This ensures the image fills its grid cell */
+  height: auto;
+}
+
+/* Adjust styles for links inside popups */
+.popup a {
+  font-size: 1em; /* Keep the link size relative to the new popup font size */
+}
+
+/* You might want to adjust the padding to accommodate the larger text */
+
+/* Add this to your existing CSS */
+.hint-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 162, 255, 0.9);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-size: 1.2em;
+  max-width: 250px;
+}
+
+.hint-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Update the article-page-title styling */
+.article-page-title {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  color: #ffffff;
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  
+}
+
+/* Adjust the articles-grid margin to accommodate the centered title */
+.articles-grid {
+  margin-top: 120px; /* Increased top margin to make room for the title */
+}
+
+/* Articles Grid Styling */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 100px auto 0; /* Added top margin to account for the title */
+}
+
+.article-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.article-card h2 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.article-card p {
+  color: #666;
+  font-size: 1em;
+}
+
+.nav-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Adjust based on your navbar height */
+  background-color: transparent;
+  z-index: 999;
+}
+
+
+
+
+
+
+
