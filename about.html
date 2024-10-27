@@ -7,10 +7,7 @@
     <link rel="stylesheet" media="screen" href="css/style.css">
 </head>
 <body>
-  <!-- Add this right after the opening body tag -->
-  <div id="hint-popup" class="hint-popup">
-    Try clicking on some of my interests!
-  </div>
+  
 
   <div class="nav-back"></div> <!-- New background div for the navbar -->
   <nav>
@@ -47,11 +44,11 @@
             </div>
             <div class="hobbies-container">
                 <ul class="skills-list">
-                    <li>Portugal</li>
-                    <li>Galway</li>
-                    <li>America (West)</li>
-                    <li>America (East)</li>
-                    <li>Iceland</li>
+                    <li id="trip-portugal">Portugal</li>
+                    <li id="trip-galway">Galway</li>
+                    <li id="trip-america-west">America (West)</li>
+                    <li id="trip-america-east">America (East)</li>
+                    <li id="trip-iceland">Iceland</li>
                 </ul> <!-- Ensure the closing tag for the ul is present -->
             </div>
             <!-- New section for social media links -->
@@ -106,7 +103,7 @@
     <!-- New popups -->
     <div id="popup-gaa" class="popup">
         <h3>My GAA Experience</h3>
-        <img src="images/gaa-placeholder.jpg" alt="GAA action shot" class="popup-image">
+        <img src="images/gaapic1.jpeg" alt="GAA action shot" class="popup-image">
         <p>Like rugby, I started playing GAA from a very young age. I first started playing for Naomh Eanna which is still the club I play for to this day </p>
         <p>Some key aspects of my GAA experience include:</p>
         <ul>
@@ -120,7 +117,7 @@
 
     <div id="popup-golf" class="popup">
         <h3>My Golfing Journey</h3>
-        <img src="images/golf-placeholder.jpg" alt="Golf course view" class="popup-image">
+        <img src="images/golfhit.JPG" alt="Golf course view" class="popup-image">
         <p>Golf has become a passion of mine, offering a unique blend of physical activity, mental challenge, and social interaction.</p>
         <p>Key highlights of my golfing experience:</p>
         <ul>
@@ -134,7 +131,7 @@
 
     <div id="popup-gym" class="popup">
         <h3>My Fitness Journey</h3>
-        <img src="images/gym-placeholder.jpg" alt="Gym equipment" class="popup-image">
+        <img src="images/gymshot1.jpeg" alt="Gym equipment" class="popup-image">
         <p>Regular gym workouts have become an integral part of my lifestyle, contributing to both my physical and mental well-being.</p>
         <p>My gym routine focuses on:</p>
         <ul>
@@ -148,7 +145,7 @@
 
     <div id="popup-learning" class="popup">
         <h3>My Passion for Learning</h3>
-        <img src="images/learning-placeholder.jpg" alt="Books and laptop" class="popup-image">
+        <img src="images/distictionsquad.jpeg" alt="Books and laptop" class="popup-image">
         <p>Continuous learning is a core value in my life, driving my personal and professional growth.</p>
         <p>My approach to learning includes:</p>
         <ul>
@@ -158,6 +155,40 @@
             <li>Applying new knowledge to real-world projects</li>
         </ul>
         <p>This passion for learning has opened up new opportunities and keeps me adaptable in an ever-changing world.</p>
+    </div>
+
+    <!-- Placeholder popups for trips -->
+    <div id="popup-portugal" class="popup">
+        <h3>My Trip to Portugal</h3>
+        <img src="images/portugal-placeholder.jpg" alt="Beautiful landscape of Portugal" class="popup-image"> <!-- Placeholder image -->
+        <p>Portugal is known for its stunning landscapes, rich history, and delicious cuisine. I enjoyed exploring the beautiful cities and relaxing on the beaches.</p>
+    </div>
+
+    <div id="popup-galway" class="popup">
+        <h3>My Trip to Galway</h3>
+        <img src="images/galway-placeholder.jpg" alt="Scenic view of Galway" class="popup-image"> <!-- Placeholder image -->
+        <p>Galway is a vibrant city with a lively arts scene and stunning coastal views. I loved experiencing the local culture and music.</p>
+    </div>
+
+    <div id="popup-america-west" class="popup">
+        <h3>My Trip to America (West)</h3>
+        <img src="images/america-west-placeholder.jpg" alt="National park in America (West)" class="popup-image"> <!-- Placeholder image -->
+        <p>The western United States offers breathtaking national parks and diverse landscapes. I had an amazing time hiking and exploring.</p>
+    </div>
+
+    <div id="popup-america-east" class="popup">
+        <h3>My Trip to America (East)</h3>
+        <img src="images/america-east-placeholder.jpg" alt="Historical landmark in America (East)" class="popup-image"> <!-- Placeholder image -->
+        <p>The eastern U.S. is rich in history and culture. I enjoyed visiting historical landmarks and experiencing the local cuisine.</p>
+    </div>
+
+    <div id="popup-iceland" class="popup">
+        <h3>My Trip to Iceland</h3>
+        <img src="images/iceland1.JPG" alt="Natural beauty of Iceland" class="popup-image">
+        <img src="images/iceland2.jpeg" alt="Natural beauty of Iceland" class="popup-image"> 
+        <img src="images/iceland3.jpeg" alt="Natural beauty of Iceland" class="popup-image"> 
+        <img src="images/iceland4.JPG" alt="Natural beauty of Iceland" class="popup-image">   <!-- Placeholder image -->
+        <p>Iceland is famous for its stunning natural beauty, including waterfalls, geysers, and the Northern Lights. It was a trip of a lifetime!</p>
     </div>
 
     <script src="script.js" defer></script> <!-- Link to the JavaScript file with defer -->

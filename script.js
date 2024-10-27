@@ -15,15 +15,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupGym = document.getElementById("popup-gym");
     const popupLearning = document.getElementById("popup-learning");
 
+    // New popups for trips
+    const popupPortugal = document.getElementById("popup-portugal");
+    const popupGalway = document.getElementById("popup-galway");
+    const popupAmericaWest = document.getElementById("popup-america-west");
+    const popupAmericaEast = document.getElementById("popup-america-east");
+    const popupIceland = document.getElementById("popup-iceland");
+
     const skillsListItems = document.querySelectorAll('.skills-list li'); // Select all list items
 
     // Debug: Log all elements to ensure they're found
     console.log("List items:", {codingItem, rugbyItem, gaaItem, golfItem, gymItem, learningItem});
-    console.log("Popups:", {popup, popupRugby, popupGaa, popupGolf, popupGym, popupLearning});
+    console.log("Popups:", {popup, popupRugby, popupGaa, popupGolf, popupGym, popupLearning, popupPortugal, popupGalway, popupAmericaWest, popupAmericaEast, popupIceland});
 
     // Function to close all pop-ups
     function closeAllPopups() {
-        [popup, popupRugby, popupGaa, popupGolf, popupGym, popupLearning].forEach(p => {
+        [popup, popupRugby, popupGaa, popupGolf, popupGym, popupLearning, popupPortugal, popupGalway, popupAmericaWest, popupAmericaEast, popupIceland].forEach(p => {
             if (p) {
                 p.classList.remove("show");
                 p.classList.remove("active");
@@ -35,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function showPopup(popupElement, listItem) {
         console.log('Attempting to show popup:', popupElement, 'for item:', listItem);
         if (popupElement && listItem) {
-            closeAllPopups();
+            closeAllPopups(); // Close any open popups before showing a new one
             popupElement.classList.add("show");
             popupElement.classList.add("active");
             listItem.classList.add('active');
@@ -57,10 +64,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
+    // Add click event listeners for the skills items
     addClickListener(codingItem, popup);
     addClickListener(rugbyItem, popupRugby);
     addClickListener(gaaItem, popupGaa);
     addClickListener(golfItem, popupGolf);
     addClickListener(gymItem, popupGym);
     addClickListener(learningItem, popupLearning);
+
+    // Add click event listeners for the trip items
+    addClickListener(document.getElementById("trip-portugal"), popupPortugal);
+    addClickListener(document.getElementById("trip-galway"), popupGalway);
+    addClickListener(document.getElementById("trip-america-west"), popupAmericaWest);
+    addClickListener(document.getElementById("trip-america-east"), popupAmericaEast);
+    addClickListener(document.getElementById("trip-iceland"), popupIceland);
 });

@@ -234,7 +234,7 @@ body {
     position: relative; /* Default position for smaller screens */
     width: 90%;
     max-width: 400px;
-    height: auto;
+    height: 90%;
     margin: 20px auto; /* Centered by default */
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
@@ -245,13 +245,13 @@ body {
     border: 2px solid rgba(0, 162, 255, 0.8);
     overflow: hidden;
     transition: box-shadow 0.3s ease, border 0.3s ease;
-    top: 3%;
+    
 }
 
 /* Media query for medium-sized screens */
 @media (min-width: 481px) and (max-width: 768px) {
     .white-box {
-        margin: 20px 10px; /* Adjust margins to fit within the frame */
+        margin: 10px 10px; /* Adjust margins to fit within the frame */
         width: 80%;
          /* Adjust width to ensure it fits well */
     }
@@ -261,7 +261,7 @@ body {
 @media (min-width: 768px) {
     .white-box {
         position: fixed; /* Fix the box to the left side */
-        top: 20px; /* Adjust top position as needed */
+        top: 40px; /* Adjust top position as needed */
         left: 20px; /* Stick to the left side */
         margin: 0; /* Remove auto margins */
         width: 350px; /* Set a fixed width for the white box */
@@ -319,20 +319,19 @@ body {
 .skills-list li {
     list-style-type: disc; /* Ensure bullet points are displayed */
     transition: color 0.3s ease; /* Smooth transition for text color */
+    display: block; /* Ensure items are displayed as block elements for vertical stacking */
 }
 
 /* Remove the background color change on hover */
 .skills-list li:hover {
-    color: #03aef7; /* Change text color on hover */
+    color: #000000; /* Change text color on hover */
     cursor: pointer; /* Change cursor to pointer */
+    background-color: transparent; /* Ensure no background color is applied */
+    font-weight: bold; /* Make text bold on hover */
 }
 
 /* Active state styling */
-.skills-list li.active {
-    color: #03aef7; /* Change text color for active item */
-    background-color: transparent; /* Ensure no background color is applied */
-    /* You can add other styles here if needed, like font-weight: bold; */
-}
+
 
 /* ---- bio container styling ---- */
 .bio-container {
@@ -357,6 +356,8 @@ body {
 
 /* ---- social media styling ---- */
 .social-media {
+    display: flex; /* Use flexbox to align icons horizontally */
+    justify-content: center; /* Center the icons horizontally */
     width: 100%; /* Ensure full width usage */
     margin: 10px 0; /* Add some margin for spacing */
 }
@@ -364,6 +365,7 @@ body {
 .social-link {
     display: flex; /* Use flexbox to align icon and text */
     align-items: center; /* Center items vertically */
+    margin: 0 10px; /* Add some margin between icons */
 }
 
 .social-icon {
@@ -453,8 +455,7 @@ nav li.active a {
 }
 
 /* Add this CSS to style the active list item */
-.skills-list li.active {
-    background-color: rgba(60, 132, 206, 0.3); /* Light background color for active item */
+.skills-list li.active { /* Light background color for active item */
     color: #03aef7; /* Change text color for active item */
     cursor: pointer; /* Change cursor to pointer */
     /* Smooth transition */
@@ -591,7 +592,7 @@ nav li.active a {
 /* Update the article-page-title styling */
 .article-page-title {
   position: absolute;
-  top: 100px;
+  top: 130px;
   left: 50%;
   transform: translateX(-50%);
   
@@ -653,6 +654,26 @@ nav li.active a {
   background-color: transparent;
   z-index: 999;
 }
+
+.article-content {
+  font-size: 1.2em; /* Increase font size */
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
