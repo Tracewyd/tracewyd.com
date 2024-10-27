@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Peters - About Me</title>
+    <link rel="stylesheet" media="screen" href="css/style.css">
+</head>
+<body>
+  <!-- Add this right after the opening body tag -->
+  <div id="hint-popup" class="hint-popup">
+    Try clicking on some of my interests!
+  </div>
+
+  <div class="nav-back"></div> <!-- New background div for the navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="about.html">About</a></li> <!-- Active class added -->
+      <li><a href="articles.html">Articles</a></li>
+    </ul>
+  </nav>
+  
+    <div class="white-box">
+        <div class="pfp-container">
+            <img src="images/rugger.jpeg" alt="Profile Picture" class="pfp">
+        </div>
+        <h2 class="name-title">Martin Peters</h2> <!-- Added title for your name -->
+        <div class="bio-container">
+            <p>Hello! I'm Martin Peters, a novice web developer who's enthusiastic about learning new things and 
+                creating new projects.</p>
+            <div class="about-small-title">
+                <h3>Interests</h3>
+            </div>
+            <div class="interests-container">
+                <ul class="skills-list">
+                    <li id="coding">Coding</li>
+                    <li id="rugby">Rugby</li>
+                    <li id="gaa">GAA</li>
+                    <li id="golf">Golf</li>
+                    <li id="gym">Gym</li>
+                    <li id="learning">Learning</li>
+                </ul>
+            </div>
+            <div class="about-small-title">
+                <h3>Trips</h3> <!-- New title for hobbies -->
+            </div>
+            <div class="hobbies-container">
+                <ul class="skills-list">
+                    <li>Portugal</li>
+                    <li>Galway</li>
+                    <li>America (West)</li>
+                    <li>America (East)</li>
+                    <li>Iceland</li>
+                </ul> <!-- Ensure the closing tag for the ul is present -->
+            </div>
+            <!-- New section for social media links -->
+            <div class="about-small-title">
+                <h3>Socials</h3>
+            </div>
+            <div class="social-media"> <!-- New container for social links -->
+                <a href="https://vs.co/2qhho21i" class="social-link">
+                    <img src="images/vsco.png" alt="VSCO" class="social-icon"> 
+                </a>
+                <a href="https://www.instagram.com/martin.peters/" target="_blank" class="social-link">
+                    <img src="images/instagram.jpg" alt="Instagram" class="social-icon"> 
+                </a>
+                <a href="https://github.com/Tracewyd" target="_blank" class="social-link">
+                    <img src="images/git logo.png" alt="gig" class="social-icon"> 
+                </a>
+            </div>
+        </div>
+    </div> <!-- New white box div -->
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <!-- Pop-up container for coding -->
+    <div id="popup" class="popup">
+        <h3>My Coding Journey</h3>
+        <img src="images/websitetest.jpg" alt="Coding project screenshot" class="popup-image">
+        <p>I began my coding journey on September 25, 2024. This marked the start of our school business project called "Performance Packs". It was an exciting opportunity to apply my newfound skills to a real-world project.</p>
+        <p>You can check out our project website here: <a href="https://www.performancepacks.shop" target="_blank">Performance Packs</a></p>
+        <p>Of course, this personal website you're currently viewing is another testament to my growing coding skills and passion for web development.</p>
+    </div>
+
+    <!-- Pop-up container for Rugby -->
+    <div id="popup-rugby" class="popup">
+        <h3>My Rugby Experience</h3>
+        <p>Rugby has been a significant part of my life since I was just 6 years old. It's more than just a sport to me; it's a journey of growth, friendship, and personal development.</p>
+        <p>Some of the invaluable lessons rugby has taught me include:</p>
+        <ul>
+            <li>Teamwork and collaboration</li>
+            <li>Leadership skills</li>
+            <li>Quick thinking under pressure</li>
+            <li>Physical fitness and discipline</li>
+        </ul>
+        <p>Many of my teammates from those early days are still by my side on the field today, a testament to the lasting bonds formed through this sport.</p>
+        <div class="rugby-images-grid">
+            <img src="images/rugby1.jpeg" alt="Rugby match action shot" class="rugby-image">
+            <img src="images/rugby2.jpeg" alt="Team huddle before the game" class="rugby-image">
+            <img src="images/rugby3.jpeg" alt="Scoring a try" class="rugby-image">
+            <img src="images/rugby5.jpg" alt="Post-match team celebration" class="rugby-image">
+        </div>
+    </div>
+
+    <!-- New popups -->
+    <div id="popup-gaa" class="popup">
+        <h3>My GAA Experience</h3>
+        <img src="images/gaa-placeholder.jpg" alt="GAA action shot" class="popup-image">
+        <p>Like rugby, I started playing GAA from a very young age. I first started playing for Naomh Eanna which is still the club I play for to this day </p>
+        <p>Some key aspects of my GAA experience include:</p>
+        <ul>
+            <li>Learning the unique skills of Gaelic football and hurling</li>
+            <li>Participating in local and regional competitions</li>
+            <li>Developing a deep appreciation for Irish culture and traditions</li>
+            <li>Building strong community connections through sport</li>
+        </ul>
+        <p>GAA sports have not only kept me physically active but have also instilled values of teamwork, perseverance, and cultural pride.</p>
+    </div>
+
+    <div id="popup-golf" class="popup">
+        <h3>My Golfing Journey</h3>
+        <img src="images/golf-placeholder.jpg" alt="Golf course view" class="popup-image">
+        <p>Golf has become a passion of mine, offering a unique blend of physical activity, mental challenge, and social interaction.</p>
+        <p>Key highlights of my golfing experience:</p>
+        <ul>
+            <li>Learning the technical aspects of the golf swing</li>
+            <li>Improving my handicap over time</li>
+            <li>Exploring beautiful golf courses</li>
+            <li>Enjoying the social aspects of the game</li>
+        </ul>
+        <p>Golf has taught me patience, precision, and the importance of continuous self-improvement.</p>
+    </div>
+
+    <div id="popup-gym" class="popup">
+        <h3>My Fitness Journey</h3>
+        <img src="images/gym-placeholder.jpg" alt="Gym equipment" class="popup-image">
+        <p>Regular gym workouts have become an integral part of my lifestyle, contributing to both my physical and mental well-being.</p>
+        <p>My gym routine focuses on:</p>
+        <ul>
+            <li>Strength training and muscle building</li>
+            <li>Cardiovascular fitness</li>
+            <li>Flexibility and mobility work</li>
+            <li>Setting and achieving personal fitness goals</li>
+        </ul>
+        <p>The gym has been a place of personal growth, helping me build discipline, resilience, and a healthier lifestyle.</p>
+    </div>
+
+    <div id="popup-learning" class="popup">
+        <h3>My Passion for Learning</h3>
+        <img src="images/learning-placeholder.jpg" alt="Books and laptop" class="popup-image">
+        <p>Continuous learning is a core value in my life, driving my personal and professional growth.</p>
+        <p>My approach to learning includes:</p>
+        <ul>
+            <li>Exploring new topics and skills regularly</li>
+            <li>Engaging in online courses and workshops</li>
+            <li>Reading widely across various subjects</li>
+            <li>Applying new knowledge to real-world projects</li>
+        </ul>
+        <p>This passion for learning has opened up new opportunities and keeps me adaptable in an ever-changing world.</p>
+    </div>
+
+    <script src="script.js" defer></script> <!-- Link to the JavaScript file with defer -->
+</body>
+</html>
