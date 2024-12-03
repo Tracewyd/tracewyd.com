@@ -1,4 +1,3 @@
-// Wait for the DOM to load
 document.addEventListener("DOMContentLoaded", function() {
     // Get the coding list item and the popups
     const codingItem = document.getElementById("coding");
@@ -30,25 +29,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to close all pop-ups
     function closeAllPopups() {
-        [popup, popupRugby, popupGaa, popupGolf, popupGym, popupLearning, popupPortugal, popupGalway, popupAmericaWest, popupAmericaEast, popupIceland].forEach(p => {
-            if (p) {
-                p.classList.remove("show");
-                p.classList.remove("active");
-            }
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.style.display = 'none';
         });
-        skillsListItems.forEach(item => item.classList.remove('active'));
+        document.querySelector('.popup-overlay').style.display = 'none';
+        document.body.classList.remove('popup-active');
+        document.querySelectorAll('.skills-list li').forEach(item => {
+            item.classList.remove('active');
+        });
     }
 
+    // Add click event listener to the document
+    document.addEventListener('click', function(event) {
+        // Check if the click was outside any popup
+        const clickedElement = event.target;
+        const isPopup = clickedElement.closest('.popup');
+        const isSkillsListItem = clickedElement.closest('.skills-list li');
+        
+        // If click is outside popup and not on a skills list item, close all popups
+        if (!isPopup && !isSkillsListItem) {
+            closeAllPopups();
+        }
+    });
+
+    // Prevent popup from closing when clicking inside it
+    document.querySelectorAll('.popup').forEach(popup => {
+        popup.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    });
+
     function showPopup(popupElement, listItem) {
-        console.log('Attempting to show popup:', popupElement, 'for item:', listItem);
         if (popupElement && listItem) {
-            closeAllPopups(); // Close any open popups before showing a new one
-            popupElement.classList.add("show");
-            popupElement.classList.add("active");
+            closeAllPopups(); // Close any open popups first
+            popupElement.style.display = 'block';
+            document.querySelector('.popup-overlay').style.display = 'block';
             listItem.classList.add('active');
-            console.log('Popup shown successfully');
-        } else {
-            console.error('Popup or list item not found:', {popupElement, listItem});
+            document.body.classList.add('popup-active');
         }
     }
 
@@ -79,3 +96,23 @@ document.addEventListener("DOMContentLoaded", function() {
     addClickListener(document.getElementById("trip-america-east"), popupAmericaEast);
     addClickListener(document.getElementById("trip-iceland"), popupIceland);
 });
+// Add click event listeners to all close buttons
+document.querySelectorAll('.close-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        this.closest('.popup').style.display = 'none';
+        // If you're using a popup-overlay, also hide it
+        document.querySelector('.popup-overlay').style.display = 'none';
+    });
+}); 
+document.querySelectorAll('.skills-list li').forEach(item => {
+    item.addEventListener('click', function() {
+        const popupId = this.id.replace('trip-', 'popup-');
+        const popup = document.getElementById(popupId);
+        if (popup) {
+            showPopup(popup, this);
+        }
+    });
+});
+
+// Close popup when clicking on the overlay
+document.querySelector('.popup-overlay').addEventListener('click', closeAllPopups); 
