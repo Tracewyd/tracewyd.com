@@ -1,7 +1,3 @@
-/* =============================================================================
-   HTML5 CSS Reset Minified - Eric Meyer
-   ========================================================================== */
-
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
 body{line-height:1}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
@@ -16,13 +12,6 @@ table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
 input,select{vertical-align:middle}
 li{list-style:none}
-
-
-/* =============================================================================
-   My CSS
-   ========================================================================== */
-
-/* ---- base ---- */
 
 html,body{ 
 	width:100%;
@@ -45,16 +34,13 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
-  position: fixed; /* Fix the body in place */
+  overflow: hidden;
+  position: fixed;
 }
 
 canvas{
   display:block;
 }
-
-
-/* ---- stats.js ---- */
 
 .count-particles{
   background: #000022;
@@ -79,7 +65,7 @@ canvas{
 #stats,
 .count-particles{
   -webkit-user-select: none;
-  user-select: none; /* Standard property for compatibility */
+  user-select: none;
   margin-top: 5px;
   margin-left: 5px;
 }
@@ -93,9 +79,6 @@ canvas{
   border-radius: 0 0 3px 3px;
 }
 
-
-/* ---- particles.js container ---- */
-
 #particles-js {
   position: absolute;
   top: 0;
@@ -105,9 +88,6 @@ canvas{
   background-color: #171515;
   z-index: -1;
 }
-
-
-/* ---- title styling ---- */
 
 .title-group {
     position: fixed;
@@ -128,14 +108,12 @@ canvas{
     text-align: center;
 }
 
-/* ---- navigation ---- */
-
 nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: transparent; /* Make background transparent */
+  background-color: transparent;
   z-index: 1000;
   padding: 10px 0;
 }
@@ -144,8 +122,8 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center the list items horizontally */
+  display: flex;
+  justify-content: center;
 }
 
 nav li {
@@ -156,11 +134,11 @@ nav a {
   color: #ffffff;
   text-decoration: none;
   font-size: 1.2em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Add text shadow for better visibility */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 nav a:hover {
-  color: #03aef7; /* Change color on hover */
+  color: #03aef7;
 }
 
 body {
@@ -171,7 +149,7 @@ body {
   animation: gradient 15s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;
-  padding-top: 60px; /* Adjust based on your navbar height */
+  padding-top: 60px;
 }
 
 @keyframes gradient {
@@ -234,8 +212,6 @@ body {
   }
 }
 
-/* ---- white box styling ---- */
-
 .white-box {
     position: relative;
     width: 90%;
@@ -252,7 +228,6 @@ body {
     transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
-/* Mobile styles (screens up to 768px) */
 @media screen and (max-width: 768px) {
     .white-box {
         position: fixed;
@@ -272,7 +247,6 @@ body {
     }
 }
 
-/* Tablet and desktop styles */
 @media screen and (min-width: 769px) {
     .white-box {
         position: fixed;
@@ -284,200 +258,166 @@ body {
     }
 }
 
-
-
-/* ---- profile picture styling ---- */
-
 .pfp-container {
-    text-align: center; /* Center the profile picture */
-    margin-bottom: 10px; /* Space below the profile picture */
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .pfp {
-    width: 200px; /* Set a fixed width */
-    height: 200px; /* Set a fixed height to match the width */
-    border-radius: 25%; /* Make it a circle */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
+    width: 200px;
+    height: 200px;
+    border-radius: 25%;
+    object-fit: cover;
 }
-
-/* ---- text container styling ---- */
 
 .bio-container {
-    display: flex; /* Use flexbox to align items side by side */
-    flex-direction: column; /* Stack items vertically */
-    color: #333; /* Text color */
+    display: flex;
+    flex-direction: column;
+    color: #333;
 }
-
-/* ---- name title styling ---- */
 
 .name-title {
-    text-align: center; /* Center the name */
-    color: #333; /* Text color */
-    font-size: 2.5em; /* Font size */
-    margin-bottom: 10px; /* Margin above and below the title */
-    text-decoration: underline; /* Underline the name title */
-}
-.about-small-title {
-    font-size: 1.5em; /* Font size */
-    margin: 10px 0; /* Margin above and below the title */
-    text-decoration: underline; /* Underline the title */
-}
-
-/* ---- skills list styling ---- */
-.skills-list {
-    list-style-type: disc; /* Use disc bullet points */
-    padding-left: 20px; /* Add some padding to the left for better alignment */
-    text-align: left; /* Align text to the left */
-    color: #333; /* Text color */
-}
-
-/* Ensure that the global reset does not affect the skills list */
-.skills-list li {
-    list-style-type: disc; /* Ensure bullet points are displayed */
-    transition: color 0.3s ease; /* Smooth transition for text color */
-    display: block; /* Ensure items are displayed as block elements for vertical stacking */
-}
-
-/* Remove the background color change on hover */
-.skills-list li:hover {
-    color: #000000; /* Change text color on hover */
-    cursor: pointer; /* Change cursor to pointer */
-    background-color: transparent; /* Ensure no background color is applied */
-    font-weight: bold; /* Make text bold on hover */
-}
-
-/* Active state styling */
-
-
-/* ---- bio container styling ---- */
-.bio-container {
-    display: flex; /* Use flexbox to align items side by side */
-    flex-direction: column; /* Stack items vertically */
-    color: #333; /* Text color */
-}
-
-/* ---- interests and hobbies container styling ---- */
-.interests-container, .hobbies-container {
-    width: 100%; /* Ensure full width usage */
-    margin: 10px 0; /* Add some margin for spacing */
-}
-
-/* ---- about small title styling ---- */
-.about-small-title {
-    font-size: 1.5em; /* Font size */
-    margin: 0px 0; /* Margin above and below the title */
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
     text-decoration: underline;
-    text-align: left; /* Underline the title */
+}
+.about-small-title {
+    font-size: 1.5em;
+    margin: 10px 0;
+    text-decoration: underline;
 }
 
-/* ---- social media styling ---- */
+.skills-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    color: #333;
+}
+
+.skills-list li {
+    list-style-type: disc;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.skills-list li:hover {
+    color: #000000;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+.interests-container, .hobbies-container {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.about-small-title {
+    font-size: 1.5em;
+    margin: 0px 0;
+    text-decoration: underline;
+    text-align: left;
+}
+
 .social-media {
-    display: flex; /* Use flexbox to align icons horizontally */
-    justify-content: center; /* Center the icons horizontally */
-    width: 100%; /* Ensure full width usage */
-    margin: 10px 0; /* Add some margin for spacing */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
 }
 
 .social-link {
-    display: flex; /* Use flexbox to align icon and text */
-    align-items: center; /* Center items vertically */
-    margin: 0 10px; /* Add some margin between icons */
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
 }
 
 .social-icon {
-    width: 60px; /* Set width for the icons (3x the original size) */
-    height: 60px; /* Set height for the icons (3x the original size) */
-    border-radius: 15px; /* Add curved corners */
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
 }
 .social-link {
 
-    display: flex; /* Use flexbox to align icon and text */
+    display: flex;
    
 }
 
-/* ---- navigation active link styling ---- */
 nav li.active a {
-    color: #03aef7; /* Change color for active link */
-    font-weight: bold; /* Make it bold */
-    text-decoration: underline; /* Underline the active link */
+    color: #03aef7;
+    font-weight: bold;
+    text-decoration: underline;
 }
-
-/* Add this CSS to style the pop-up */
 
 .popup.show {
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Make it visible */
-    animation: floatUp 0.5s ease forwards; /* Animation for floating up */
+    opacity: 1;
+    visibility: visible;
+    animation: floatUp 0.5s ease forwards;
 }
 
-/* Keyframes for the floating up animation */
 @keyframes floatUp {
     0% {
-        transform: translate(-50%, 100%); /* Start from below the screen */
-        opacity: 0; /* Start hidden */
+        transform: translate(-50%, 100%);
+        opacity: 0;
     }
     100% {
-        transform: translate(-50%, -50%); /* End at the center */
-        opacity: 1; /* Fully visible */
+        transform: translate(-50%, -50%);
+        opacity: 1;
     }
 }
 
 .popup-image {
-    max-width: 50%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Space below the image */
-    border-radius: 10px; /* Optional: add rounded corners */
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
-/* Add this CSS to style the close button */
 .close-popup {
-    background-color: #03aef7; /* Set the background color */
-    color: white; /* Set the text color */
-    border: none; /* Remove default border */
-    padding: 10px 20px; /* Add padding for better appearance */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer; /* Change cursor to pointer */
-    font-size: 1em; /* Set font size */
+    background-color: #03aef7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
     transition: background-color 0.3s ease;
     padding: 8px;
     margin-top: 10px;
-  /* Smooth transition for hover effect */
 }
 
-/* Add hover effect for the close button */
 #close-popup:hover {
-    background-color: #0291b5; /* Darker shade for hover effect */
+    background-color: #0291b5;
 }
 
-/* Add this CSS to style the rugby images */
 .rugby-image {
-    max-width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Space below the image */
-    border-radius: 10px; /* Optional: add rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: add shadow for depth */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
-
-
-/* Ensure the popup class allows for a grid layout */
-
-/* Add this CSS to style the active pop-up */
 .popup.active {
-    box-shadow: 0 0 15px rgba(0, 162, 255, 0.5); /* Add a glow effect */
-    border: 2px solid rgba(0, 162, 255, 0.8); /* Change border color */
-    transition: box-shadow 0.3s ease, border 0.3s ease; /* Smooth transition */
+    box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+    border: 2px solid rgba(0, 162, 255, 0.8);
+    transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
-/* Add this CSS to style the active list item */
-.skills-list li.active { /* Light background color for active item */
-    color: #03aef7; /* Change text color for active item */
-    cursor: pointer; /* Change cursor to pointer */
-    /* Smooth transition */
+.skills-list li.active {
+    color: #03aef7;
+    cursor: pointer;
 }
 
-/* Update the popup styling */
 .popup {
   position: fixed;
   background-color: white;
@@ -491,20 +431,18 @@ nav li.active a {
   color: #333;
 }
 
-/* Desktop styles (screens larger than 768px) */
 @media screen and (min-width: 769px) {
     .popup {
         position: fixed;
         top: 50%;
-        right: 40px; /* Set distance from right edge */
-        left: auto; /* Remove left positioning */
+        right: 40px;
+        left: auto;
         transform: translateY(-50%);
-        width: 45%; /* Set width relative to viewport */
+        width: 45%;
         max-width: 600px;
-        min-width: 400px; /* Ensure popup doesn't get too small */
+        min-width: 400px;
     }
 
-    /* Ensure white box stays in position */
     .white-box {
         position: fixed;
         left: 40px;
@@ -512,13 +450,11 @@ nav li.active a {
         z-index: 1000;
     }
 
-    /* Add overlay styles */
     .popup-overlay {
         z-index: 999;
     }
 }
 
-/* Mobile styles */
 @media screen and (max-width: 768px) {
     .popup {
         top: 50%;
@@ -571,41 +507,34 @@ nav li.active a {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Adjust the show class to remove the transform */
 .popup.show {
-  display: block; /* Change from opacity/visibility to display */
+  display: block;
 }
 
-/* Adjust the images in the popup */
 .popup-image, .rugby-image {
-  max-width: 70%; /* Reduce from 100% to 70% or any desired percentage */
+  max-width: 70%;
   height: auto;
   margin-bottom: 10px;
   border-radius: 10px;
 }
 
-/* Adjust the rugby images grid */
 .rugby-images-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  width: 80%; /* Reduce the width of the grid container */
-  margin: 0 auto; /* Center the grid */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .rugby-image {
-  max-width: 100%; /* This ensures the image fills its grid cell */
+  max-width: 100%;
   height: auto;
 }
 
-/* Adjust styles for links inside popups */
 .popup a {
-  font-size: 1em; /* Keep the link size relative to the new popup font size */
+  font-size: 1em;
 }
 
-/* You might want to adjust the padding to accommodate the larger text */
-
-/* Add this to your existing CSS */
 .hint-popup {
   position: fixed;
   top: 20px;
@@ -628,7 +557,6 @@ nav li.active a {
   visibility: visible;
 }
 
-/* Update the article-page-title styling */
 .article-page-title {
   position: absolute;
   top: 130px;
@@ -645,19 +573,17 @@ nav li.active a {
   
 }
 
-/* Adjust the articles-grid margin to accommodate the centered title */
 .articles-grid {
-  margin-top: 120px; /* Increased top margin to make room for the title */
+  margin-top: 120px;
 }
 
-/* Articles Grid Styling */
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
-  margin: 100px auto 0; /* Added top margin to account for the title */
+  margin: 100px auto 0;
 }
 
 .article-card {
@@ -689,20 +615,19 @@ nav li.active a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px; /* Adjust based on your navbar height */
+  height: 60px;
   background-color: transparent;
   z-index: 999;
 }
 
 .article-content {
-  font-size: 1.2em; /* Increase font size */
+  font-size: 1.2em;
   position: absolute;
   top: 200px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Existing popup styles */
 .popup {
     position: fixed;
     top: 50%;
@@ -720,9 +645,7 @@ nav li.active a {
     z-index: 1001;
 }
 
-/* Mobile-specific styles */
 @media screen and (max-width: 768px) {
-    /* Hide other elements when popup is shown */
     body.popup-active .white-box,
     body.popup-active .nav-back,
     body.popup-active nav,
@@ -730,7 +653,6 @@ nav li.active a {
         display: none;
     }
 
-    /* Adjust popup styling for mobile */
     .popup.show {
         position: fixed;
         top: 0;
@@ -747,7 +669,6 @@ nav li.active a {
         background-color: white;
     }
 
-    /* Adjust popup content for mobile */
     .popup.show img {
         max-width: 100%;
         height: auto;
@@ -755,7 +676,6 @@ nav li.active a {
     }
 }
 
-/* Add backdrop blur styles */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -769,7 +689,6 @@ nav li.active a {
     -webkit-backdrop-filter: blur(5px);
 }
 
-/* Update popup display styles */
 body.popup-active .white-box,
 body.popup-active .nav-back,
 body.popup-active nav,
@@ -779,18 +698,16 @@ body.popup-active #particles-js {
     transition: filter 0.3s ease;
 }
 
-/* Ensure popup stays clear */
 .popup {
     filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 }
 
-/* Update CV Button styling */
 .cv-button {
-    display: inline-flex; /* Changed from flex to inline-flex */
+    display: inline-flex;
     align-items: center;
-    justify-content: center; /* Center the content */
+    justify-content: center;
     gap: 4px;
     background-color: transparent;
     color: white;
@@ -801,7 +718,7 @@ body.popup-active #particles-js {
     transition: all 0.3s ease;
     border: 1px solid white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 140px; /* Set fixed width */
+    width: 140px;
 }
 
 .cv-button-container {
@@ -809,16 +726,15 @@ body.popup-active #particles-js {
     margin-top: 20px;
     text-align: center;
     display: flex;
-    justify-content: center; /* Center the button container */
+    justify-content: center;
 }
 
 .download-icon {
-    width: 14px; /* Made icon slightly smaller */
-    height: 14px; /* Made icon slightly smaller */
-    stroke: white; /* Keep icon white */
+    width: 14px;
+    height: 14px;
+    stroke: white;
 }
 
-/* Article Content Styling */
 .article-container {
     max-width: 800px;
     margin: 0 auto;
@@ -827,7 +743,7 @@ body.popup-active #particles-js {
 }
 
 .article-content {
-    margin-top: 150px; /* Space below the title */
+    margin-top: 150px;
     line-height: 1.6;
     font-size: 1.2em;
     text-align: justify;
