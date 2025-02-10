@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - Martin Peters</title>
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            overflow-y: auto; /* Allow vertical scrolling */
+            position: relative;
+            background: #333;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 3;
+        }
+
+        /* Add this new style for the navbar masking effect */
+        nav::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px; /* Match your navbar height */
+            background: #333; /* Match your body background */
+            opacity: 0.95; /* Slightly transparent */
+            z-index: -1;
+        }
+
+        .nav-back {
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+            background: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+            margin-top: 80px; /* Increased to ensure content starts below navbar */
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .game-card h2 {
+            color: white;
+            margin: 0.5rem 0;
+        }
+
+        .game-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: 90vh;
+            background: #000;
+            z-index: 1000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .game-popup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            background: #000;
+        }
+
+        .close-game-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1002;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-game-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            overflow-y: hidden; /* Prevent overlay from scrolling */
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                padding-bottom: 3rem;
+                margin-top: 80px;
+                position: relative;
+                z-index: 0;
+            }
+            
+            nav::before {
+                height: 70px; /* Adjust for mobile navbar height if needed */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-overlay"></div>
+
+    <div class="nav-back"></div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li class="active"><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+
+    <div class="games-grid">
+        <div class="game-card" data-game="game1">
+            <img src="images/crossylogo.jpg" alt="Game 1">
+            <h2>Crossy Road</h2>
+        </div>
+        <div class="game-card" data-game="game2">
+            <img src="images/dinogamelogo.png" alt="Game 2">
+            <h2>Dino Game</h2>
+        </div>
+        <div class="game-card" data-game="game3">
+            <img src="images/slitherlogo.jpg" alt="Game 3">
+            <h2>Slither.io
+            </h2>
+        </div>
+    </div>
+
+    <!-- Game Popups -->
+    <div id="game1-popup" class="game-popup">
+        <button class="close-game-btn">Close</button>
+        <iframe 
+            src="https://webglmath.github.io/crossy-road/" 
+            title="Crossy Road" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input" 
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <div id="game2-popup" class="game-popup">
+        <button class="close-game-btn">Close</button>
+        <iframe 
+            src="https://dinosaur-games.github.io/#" 
+            title="Chrome Dino Game"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
+            frameborder="0" 
+            scrolling="yes" 
+            width="100%" 
+            height="100%" 
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <div id="game3-popup" class="game-popup">
+        <button class="close-game-btn">Close</button>
+        <iframe 
+            src="https://slither.io/" 
+            title="Slither.io" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input; gamepad" 
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.game-card');
+            const overlay = document.querySelector('.popup-overlay');
+            
+            gameCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const gameId = card.dataset.game;
+                    const popup = document.getElementById(`${gameId}-popup`);
+                    if (popup) {
+                        popup.style.display = 'block';
+                        overlay.style.display = 'block';
+                        document.body.classList.add('popup-active');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.close-game-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const popup = btn.closest('.game-popup');
+                    popup.style.display = 'none';
+                    overlay.style.display = 'none';
+                    document.body.classList.remove('popup-active');
+                });
+            });
+
+            overlay.addEventListener('click', () => {
+                document.querySelectorAll('.game-popup').forEach(popup => {
+                    popup.style.display = 'none';
+                });
+                overlay.style.display = 'none';
+                document.body.classList.remove('popup-active');
+            });
+        });
+    </script>
+</body>
+</html> 
