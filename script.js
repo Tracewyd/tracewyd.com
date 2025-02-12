@@ -133,6 +133,24 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    const gameCards = document.querySelectorAll('.game-card');
+    const overlay = document.querySelector('.popup-overlay');
+    
+    gameCards.forEach(card => {
+        // Skip the third card since it has its own onclick handler
+        if (card.dataset.game !== 'game3') {
+            card.addEventListener('click', () => {
+                const gameId = card.dataset.game;
+                const popup = document.getElementById(`${gameId}-popup`);
+                if (popup) {
+                    popup.style.display = 'block';
+                    overlay.style.display = 'block';
+                    document.body.classList.add('popup-active');
+                }
+            });
+        }
+    });
 });
 
 document.querySelectorAll('.close-btn').forEach(button => {

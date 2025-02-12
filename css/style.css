@@ -419,16 +419,17 @@ nav li.active a {
 }
 
 .popup {
-  position: fixed;
-  background-color: white;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 1001;
-  color: #333;
+    position: fixed;
+    background-color: black;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #03aef7;
+    box-shadow: 0 0 20px rgba(3, 174, 247, 0.5);
+    display: none;
+    z-index: 1001;
+    color: white;
 }
 
 @media screen and (min-width: 769px) {
@@ -754,6 +755,41 @@ body.popup-active #particles-js {
 
 .article-content p {
     margin-bottom: 20px;
+}
+
+.github-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid #225fe4;
+    box-shadow: 0 0 20px rgba(20, 28, 31, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 1.2em;
+    max-width: 250px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.github-popup a {
+    color: white;
+    text-decoration: none;
+}
+
+.github-popup a:hover {
+    color: #03aef7;
+    text-decoration: underline;
+}
+
+.github-popup.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 

@@ -13,6 +13,12 @@
     Use the navigation bar to explore the website!
   </div>
 
+  <div id="github-popup" class="github-popup">
+    <a href="https://github.com/Tracewyd/Endless-Runner" target="_blank">
+        Click here to check out cool Python game I made.
+    </a>
+  </div>
+
   <div class="nav-back"></div>
   <nav>
     <ul>
@@ -41,5 +47,58 @@
   <script src="js/app.js"></script>
   <script src="js/lib/stats.js"></script>
   <script src="script.js" defer></script>
+
+  <style>
+    .github-popup {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0, 162, 255, 0.9);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        font-size: 1.2em;
+        max-width: 250px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .github-popup a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .github-popup a:hover {
+        text-decoration: underline;
+    }
+
+    .github-popup.show {
+        opacity: 1;
+        visibility: visible;
+    }
+  </style>
+
+  <script>
+    // Show GitHub popup after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const githubPopup = document.getElementById('github-popup');
+        githubPopup.classList.add('show');
+        
+        // Hide after 8 seconds
+        setTimeout(() => {
+            githubPopup.classList.remove('show');
+        }, 8000); // 8000 milliseconds = 8 seconds
+
+        // Hide popup when clicked
+        githubPopup.addEventListener('click', function() {
+            this.classList.remove('show');
+        });
+    });
+  </script>
 </body>
 </html>
