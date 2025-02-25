@@ -1,0 +1,6 @@
+# Allow all crawlers access to everything except specific directories
+User-agent: *
+Disallow: /images/
+Allow: /
+
+Sitemap: https://tracewyd.github.io/sitemap.xml
