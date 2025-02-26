@@ -1,9 +1,6 @@
 # Allow all crawlers access to everything except specific directories
 User-agent: *
-Disallow: /images/
-Disallow: /admin/
-Disallow: /tmp/
-Allow: /
+Disallow: *
 
 Crawl-delay: 10
 
