@@ -1,6 +1,10 @@
 # Allow all crawlers access to everything except specific directories
 User-agent: *
 Disallow: /images/
+Disallow: /admin/
+Disallow: /tmp/
 Allow: /
 
-Sitemap: https://tracewyd.github.io/sitemap.xml
+Crawl-delay: 10
+
+Sitemap: https://tracewyd.com/sitemap.xml
