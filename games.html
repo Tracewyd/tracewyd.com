@@ -165,14 +165,14 @@
 
     <div class="games-grid">
         <div class="game-card" data-game="game1">
-            <img src="images/crossylogo.jpg" alt="Game 1">
-            <h2>Crossy Road</h2>
+            <img src="images/pong.jpg" alt="2-Player Pong">
+            <h2>2-Player Pong</h2>
         </div>
-        <div class="game-card" data-game="game2">
-            <img src="images/dinogamelogo.png" alt="Game 2">
-            <h2>Dino Game</h2>
+        <div class="game-card" onclick="window.location.href='rocketleague.html'">
+            <img src="images/rocketleague.png" alt="2D Rocket League">
+            <h2>2D Rocket League</h2>
         </div>
-        <div class="game-card" data-game="game3" onclick="window.open('https://github.com/Tracewyd/Endless-Runner', '_blank')">
+        <div class="game-card" data-game="game3" onclick="window.open('https://github.com/Tracewyd/Endless-Runner')">
             <img src="images/mygamegit.png" alt="Game 3">
             <h2>Endless Runner</h2>
         </div>
@@ -182,10 +182,10 @@
     <div id="game1-popup" class="game-popup">
         <button class="close-game-btn">Close</button>
         <iframe 
-            src="https://webglmath.github.io/crossy-road/" 
-            title="Crossy Road" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input" 
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
+            src="pong.html" 
+            title="2-Player Pong"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input"
+            style="width: 100%; height: 100%; border: none;"
             loading="lazy">
         </iframe>
     </div>
@@ -193,14 +193,10 @@
     <div id="game2-popup" class="game-popup">
         <button class="close-game-btn">Close</button>
         <iframe 
-            src="https://dinosaur-games.github.io/#" 
-            title="Chrome Dino Game"
+            src="rocketleague.html" 
+            title="2D Rocket League"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen; keyboard-input"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
-            frameborder="0" 
-            scrolling="yes" 
-            width="100%" 
-            height="100%" 
+            style="width: 100%; height: 100%; border: none;"
             loading="lazy">
         </iframe>
     </div>
