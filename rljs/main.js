@@ -1,10 +1,15 @@
 // GAME CONFIGURATION
 const BOOST_CONFIG = {
   MAX_BOOST: 100,
-  BOOST_REGEN_RATE: 0.2,  // Amount of boost regenerated per frame
+  BOOST_REGEN_RATE: 2,  // Amount of boost regenerated per frame 0.2
   BOOST_USE_RATE: 1,      // Amount of boost used per frame
-  BOOST_MULTIPLIER: 2,  // Speed multiplier when boosting
-  MIN_BOOST_TO_USE: 1    // Minimum boost required to activate
+  BOOST_FORCE: 6,       // Boost strength
+  MAX_SPEED: 100,           // Maximum speed
+  BASE_SPEED: 4,        // Base forward speed
+  BRAKE_SPEED: 0.6,       // Speed multiplier when braking (30% of base speed)
+  MIN_BOOST_TO_USE: 1,    // Minimum boost required to activate
+  BALL_FRICTION: 0.2,     // Ball friction coefficient
+  CAR_FRICTION: 0.05      // Car friction coefficient
 };
 
 // SET CANVAS SIZE AND APPEND TO BODY
@@ -37,22 +42,49 @@ function draw() {
 // UPDATE
 function update() {
   for(var i=0; i < players.length; i++) {
+    // Apply constant forward movement
+    players[i].vel = BOOST_CONFIG.BASE_SPEED;
+
     // Update boost
     if (players[i].isBoosting && players[i].boost > BOOST_CONFIG.MIN_BOOST_TO_USE) {
       players[i].boost = Math.max(0, players[i].boost - BOOST_CONFIG.BOOST_USE_RATE);
-      var boostMultiplier = BOOST_CONFIG.BOOST_MULTIPLIER;
+      
+      // Apply boost force in the direction the car is facing
+      var boostX = BOOST_CONFIG.BOOST_FORCE * Math.sin(players[i].rot*Math.PI/180);
+      var boostY = -BOOST_CONFIG.BOOST_FORCE * Math.cos(players[i].rot*Math.PI/180);
+      
+      // Update velocity components
+      players[i].velX = boostX;
+      players[i].velY = boostY;
+      
+      // Calculate total velocity
+      var totalVel = Math.hypot(players[i].velX, players[i].velY);
+      
+      // Clamp velocity to maximum speed
+      if (totalVel > BOOST_CONFIG.MAX_SPEED) {
+        var scale = BOOST_CONFIG.MAX_SPEED / totalVel;
+        players[i].velX *= scale;
+        players[i].velY *= scale;
+      }
     } else {
       players[i].boost = Math.min(BOOST_CONFIG.MAX_BOOST, players[i].boost + BOOST_CONFIG.BOOST_REGEN_RATE);
-      var boostMultiplier = 1;
+      players[i].velX = BOOST_CONFIG.BASE_SPEED * Math.sin(players[i].rot*Math.PI/180);
+      players[i].velY = -BOOST_CONFIG.BASE_SPEED * Math.cos(players[i].rot*Math.PI/180);
+    }
+
+    // Apply braking
+    if (players[i].isBraking) {
+      players[i].velX *= BOOST_CONFIG.BRAKE_SPEED;
+      players[i].velY *= BOOST_CONFIG.BRAKE_SPEED;
     }
 
     // Update boost meters
     document.getElementById('orange-boost-fill').style.width = (players[0].boost) + '%';
     document.getElementById('blue-boost-fill').style.width = (players[1].boost) + '%';
 
-    // Update position with boost multiplier
-    players[i].xMid += (players[i].vel * boostMultiplier * Math.sin(players[i].rot*Math.PI/180));
-    players[i].yMid += -(players[i].vel * boostMultiplier * Math.cos(players[i].rot*Math.PI/180));
+    // Update position
+    players[i].xMid += players[i].velX;
+    players[i].yMid += players[i].velY;
   }
 
   ball.x += ball.velX;
@@ -82,12 +114,15 @@ function Player(color, xInitial, yInitial, rotInitial, colorPath) {
   this.y = yInitial;
   this.rot = rotInitial;
   this.vel = 0;
+  this.velX = 0;
+  this.velY = 0;
   this.width = 45;
   this.height = 75;
   this.xMid = this.x + this.width/2;
   this.yMid = this.y + this.height/2;
-  this.boost = BOOST_CONFIG.MAX_BOOST;  // Add boost property
+  this.boost = BOOST_CONFIG.MAX_BOOST;
   this.isBoosting = false;
+  this.isBraking = false;
   this.draw = function() {
     var drawing = new Image();
     drawing.src = colorPath;
@@ -198,30 +233,36 @@ KeyboardController({
   // PLAYER 1 CONTROLS
   // A
     65: function() { players[0].rot -= 10; },
-  // W
-    87: function() { players[0].vel < 4 ? players[0].vel += .15 : players[0].vel = players[0].vel; },
+  // W (Boost)
+    87: function() { players[0].isBoosting = true; },
   // D
     68: function() { players[0].rot += 10; },
-  // S (Boost)
-    83: function() { players[0].isBoosting = true; },
+  // S (Brake)
+    83: function() { players[0].isBraking = true; },
   // PLAYER 2 CONTROLS
   // left
     37: function() { players[1].rot -= 10; },
-  // up
-    38: function() { players[1].vel < 4 ? players[1].vel += .15 : players[1].vel = players[1].vel; },
+  // up (Boost)
+    38: function() { players[1].isBoosting = true; },
   // right
     39: function() { players[1].rot += 10; },
-  // down (Boost)
-    40: function() { players[1].isBoosting = true; },
+  // down (Brake)
+    40: function() { players[1].isBraking = true; },
 }, 50);
 
-// Add key up event listeners for boost
+// Add key up event listeners
 document.addEventListener('keyup', function(event) {
-  if (event.keyCode === 83) { // S key
+  if (event.keyCode === 87) { // W key
     players[0].isBoosting = false;
   }
-  if (event.keyCode === 40) { // down arrow
+  if (event.keyCode === 38) { // up arrow
     players[1].isBoosting = false;
+  }
+  if (event.keyCode === 83) { // S key
+    players[0].isBraking = false;
+  }
+  if (event.keyCode === 40) { // down arrow
+    players[1].isBraking = false;
   }
 });
 
@@ -241,8 +282,8 @@ function carFriction(friction) {
 
 // SPEED DECAY FUNCTION CALL
 setInterval(function() {
-  ballFriction(.2);
-  carFriction(.1);
+  ballFriction(BOOST_CONFIG.BALL_FRICTION);
+  carFriction(BOOST_CONFIG.CAR_FRICTION);
 }, 500);
 
 // TIMER ACTION
