@@ -1,3 +1,12 @@
+// GAME CONFIGURATION
+const BOOST_CONFIG = {
+  MAX_BOOST: 100,
+  BOOST_REGEN_RATE: 0.2,  // Amount of boost regenerated per frame
+  BOOST_USE_RATE: 1,      // Amount of boost used per frame
+  BOOST_MULTIPLIER: 2,  // Speed multiplier when boosting
+  MIN_BOOST_TO_USE: 1    // Minimum boost required to activate
+};
+
 // SET CANVAS SIZE AND APPEND TO BODY
 var CANVAS_WIDTH = 1200;
 var CANVAS_HEIGHT = 555;
@@ -28,8 +37,22 @@ function draw() {
 // UPDATE
 function update() {
   for(var i=0; i < players.length; i++) {
-    players[i].xMid += (players[i].vel * Math.sin(players[i].rot*Math.PI/180));
-    players[i].yMid += -(players[i].vel * Math.cos(players[i].rot*Math.PI/180));
+    // Update boost
+    if (players[i].isBoosting && players[i].boost > BOOST_CONFIG.MIN_BOOST_TO_USE) {
+      players[i].boost = Math.max(0, players[i].boost - BOOST_CONFIG.BOOST_USE_RATE);
+      var boostMultiplier = BOOST_CONFIG.BOOST_MULTIPLIER;
+    } else {
+      players[i].boost = Math.min(BOOST_CONFIG.MAX_BOOST, players[i].boost + BOOST_CONFIG.BOOST_REGEN_RATE);
+      var boostMultiplier = 1;
+    }
+
+    // Update boost meters
+    document.getElementById('orange-boost-fill').style.width = (players[0].boost) + '%';
+    document.getElementById('blue-boost-fill').style.width = (players[1].boost) + '%';
+
+    // Update position with boost multiplier
+    players[i].xMid += (players[i].vel * boostMultiplier * Math.sin(players[i].rot*Math.PI/180));
+    players[i].yMid += -(players[i].vel * boostMultiplier * Math.cos(players[i].rot*Math.PI/180));
   }
 
   ball.x += ball.velX;
@@ -63,6 +86,8 @@ function Player(color, xInitial, yInitial, rotInitial, colorPath) {
   this.height = 75;
   this.xMid = this.x + this.width/2;
   this.yMid = this.y + this.height/2;
+  this.boost = BOOST_CONFIG.MAX_BOOST;  // Add boost property
+  this.isBoosting = false;
   this.draw = function() {
     var drawing = new Image();
     drawing.src = colorPath;
@@ -103,6 +128,13 @@ function resetGame() {
   player1 = new Player("dodgerblue", CANVAS_WIDTH/9-45/2, CANVAS_HEIGHT/2-75/2, 90, "assets/Car_orange.png");
   player2 = new Player("orange", CANVAS_WIDTH/9*8-45/2, CANVAS_HEIGHT/2-75/2, -90, "assets/Car_blue.png");
   players.push(player1, player2);
+  
+  // Reset boost meters
+  players[0].boost = BOOST_CONFIG.MAX_BOOST;
+  players[1].boost = BOOST_CONFIG.MAX_BOOST;
+  document.getElementById('orange-boost-fill').style.width = '100%';
+  document.getElementById('blue-boost-fill').style.width = '100%';
+
   ball.x = CANVAS_WIDTH/2;
   ball.y = CANVAS_HEIGHT/2;
   ball.velX = 0;
@@ -170,8 +202,8 @@ KeyboardController({
     87: function() { players[0].vel < 4 ? players[0].vel += .15 : players[0].vel = players[0].vel; },
   // D
     68: function() { players[0].rot += 10; },
-  // S
-    83: function() { players[0].vel > -2.5 ? players[0].vel -= .25 : players[0].vel = players[0].vel; },
+  // S (Boost)
+    83: function() { players[0].isBoosting = true; },
   // PLAYER 2 CONTROLS
   // left
     37: function() { players[1].rot -= 10; },
@@ -179,10 +211,19 @@ KeyboardController({
     38: function() { players[1].vel < 4 ? players[1].vel += .15 : players[1].vel = players[1].vel; },
   // right
     39: function() { players[1].rot += 10; },
-  // down
-    40: function() { players[1].vel > -2.5 ? players[1].vel -= .25 : players[1].vel = players[1].vel; },
+  // down (Boost)
+    40: function() { players[1].isBoosting = true; },
 }, 50);
 
+// Add key up event listeners for boost
+document.addEventListener('keyup', function(event) {
+  if (event.keyCode === 83) { // S key
+    players[0].isBoosting = false;
+  }
+  if (event.keyCode === 40) { // down arrow
+    players[1].isBoosting = false;
+  }
+});
 
 /* BALL SPEED DECAY */
 function ballFriction(friction) {

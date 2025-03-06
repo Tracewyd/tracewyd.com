@@ -38,6 +38,10 @@ canvas {
   margin: -5px auto;
   text-align: center;
   height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 
 .logo {
@@ -84,7 +88,7 @@ canvas {
 }
 
 .spacer {
-  width: 0px;
+  width: 40px;
   display: inline-block;
 }
 
@@ -160,18 +164,20 @@ canvas {
 }
 
 .start-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: green;
   width: auto;
-  position: absolute;
-  top: 20px;
-  left: 75%;
   font-family: planerregular;
   color: white;
   font-size: 225%;
-  padding: 10px;
+  padding: 20px 40px;
   border: solid white 2px;
   border-radius: 10px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .instructions {
@@ -249,6 +255,30 @@ canvas {
 
 .game-active .close-button {
   display: block; /* Show when game is active */
+}
+
+.boost-meters {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.boost-meter {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  width: 150px;
+  margin: 0 10px;
+}
+
+.score-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 

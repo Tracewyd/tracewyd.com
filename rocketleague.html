@@ -5,10 +5,83 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Rocket League 2d</title>
   <link rel="stylesheet" href="rlcss/main.css">
+  <style>
+    .return-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      border: 2px solid white;
+      border-radius: 50%;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      line-height: 34px;
+      z-index: 10000;
+      transition: all 0.3s ease;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .return-button:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
+      transform: scale(1.1);
+    }
+    .boost-meters {
+      position: fixed;
+      top: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+      z-index: 1000;
+    }
+
+    .boost-meter {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .boost-label {
+      color: white;
+      font-family: 'planerregular';
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .boost-bar {
+      height: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .boost-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #ff6b00, #ffd000);
+      transition: width 0.2s ease;
+    }
+
+    .blue-boost .boost-fill {
+      background: linear-gradient(90deg, #0066ff, #00ffff);
+    }
+  </style>
   <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
 </head>
 <body>
+<button class="return-button" onclick="window.location.href='games.html'">×</button>
+
 <audio src="assets/goal_impact.ogg" class="goal-impact"></audio>
 <audio src="assets/goal_horn.ogg" class="goal-horn"></audio>
 <audio src="assets/ball-hit.ogg" class="ball-hit"></audio>
@@ -19,14 +92,30 @@
 <!-- ScoreBoard and Timer -->
 <div>
   <div class="center">
-    <div class="scoreboard orange"></div>
+    <div class="score-group">
+      <div class="boost-meter orange-boost">
+        <div class="boost-label">BOOST</div>
+        <div class="boost-bar">
+          <div class="boost-fill" id="orange-boost-fill"></div>
+        </div>
+      </div>
+      <div class="scoreboard orange"></div>
+    </div>
     <div class="spacer"></div>
     <div class="logo-timer">
       <img class="logo" src="assets/rocket-league-header.png" alt="">
       <img class="twod-logo" src="assets/2d_white1.png" alt="">
     </div>
     <div class="spacer"></div>
-    <div class="scoreboard blue"></div>
+    <div class="score-group">
+      <div class="scoreboard blue"></div>
+      <div class="boost-meter blue-boost">
+        <div class="boost-label">BOOST</div>
+        <div class="boost-bar">
+          <div class="boost-fill" id="blue-boost-fill"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
