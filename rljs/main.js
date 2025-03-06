@@ -1,13 +1,13 @@
 // GAME CONFIGURATION
 const BOOST_CONFIG = {
   MAX_BOOST: 100,
-  BOOST_REGEN_RATE: 2,  // Amount of boost regenerated per frame 0.2
+  BOOST_REGEN_RATE: 0.3,  // Amount of boost regenerated per frame 0.2
   BOOST_USE_RATE: 1,      // Amount of boost used per frame
-  BOOST_FORCE: 6,       // Boost strength
+  BOOST_FORCE: 6.5,       // Boost strength
   MAX_SPEED: 100,           // Maximum speed
   BASE_SPEED: 4,        // Base forward speed
   BRAKE_SPEED: 0.6,       // Speed multiplier when braking (30% of base speed)
-  MIN_BOOST_TO_USE: 1,    // Minimum boost required to activate
+  MIN_BOOST_TO_USE: 10,    // Minimum boost required to activate
   BALL_FRICTION: 0.2,     // Ball friction coefficient
   CAR_FRICTION: 0.05      // Car friction coefficient
 };
