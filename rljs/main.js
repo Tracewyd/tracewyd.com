@@ -46,27 +46,43 @@ function update() {
     players[i].vel = BOOST_CONFIG.BASE_SPEED;
 
     // Update boost
-    if (players[i].isBoosting && players[i].boost > BOOST_CONFIG.MIN_BOOST_TO_USE) {
-      players[i].boost = Math.max(0, players[i].boost - BOOST_CONFIG.BOOST_USE_RATE);
-      
-      // Apply boost force in the direction the car is facing
-      var boostX = BOOST_CONFIG.BOOST_FORCE * Math.sin(players[i].rot*Math.PI/180);
-      var boostY = -BOOST_CONFIG.BOOST_FORCE * Math.cos(players[i].rot*Math.PI/180);
-      
-      // Update velocity components
-      players[i].velX = boostX;
-      players[i].velY = boostY;
-      
-      // Calculate total velocity
-      var totalVel = Math.hypot(players[i].velX, players[i].velY);
-      
-      // Clamp velocity to maximum speed
-      if (totalVel > BOOST_CONFIG.MAX_SPEED) {
-        var scale = BOOST_CONFIG.MAX_SPEED / totalVel;
-        players[i].velX *= scale;
-        players[i].velY *= scale;
+    if (players[i].isBoosting) {
+      // Check if we can start a new boost
+      if (!players[i].isActivelyBoosting && players[i].boost > BOOST_CONFIG.MIN_BOOST_TO_USE) {
+        players[i].isActivelyBoosting = true;
+      }
+
+      // If actively boosting, continue until empty
+      if (players[i].isActivelyBoosting && players[i].boost > 0) {
+        players[i].boost = Math.max(0, players[i].boost - BOOST_CONFIG.BOOST_USE_RATE);
+        
+        // Apply boost force in the direction the car is facing
+        var boostX = BOOST_CONFIG.BOOST_FORCE * Math.sin(players[i].rot*Math.PI/180);
+        var boostY = -BOOST_CONFIG.BOOST_FORCE * Math.cos(players[i].rot*Math.PI/180);
+        
+        // Update velocity components
+        players[i].velX = boostX;
+        players[i].velY = boostY;
+        
+        // Calculate total velocity
+        var totalVel = Math.hypot(players[i].velX, players[i].velY);
+        
+        // Clamp velocity to maximum speed
+        if (totalVel > BOOST_CONFIG.MAX_SPEED) {
+          var scale = BOOST_CONFIG.MAX_SPEED / totalVel;
+          players[i].velX *= scale;
+          players[i].velY *= scale;
+        }
+      } else {
+        // If we're out of boost, stop boosting but allow regeneration
+        players[i].isActivelyBoosting = false;
+        players[i].boost = Math.min(BOOST_CONFIG.MAX_BOOST, players[i].boost + BOOST_CONFIG.BOOST_REGEN_RATE);
+        players[i].velX = BOOST_CONFIG.BASE_SPEED * Math.sin(players[i].rot*Math.PI/180);
+        players[i].velY = -BOOST_CONFIG.BASE_SPEED * Math.cos(players[i].rot*Math.PI/180);
       }
     } else {
+      // Not holding boost button
+      players[i].isActivelyBoosting = false;
       players[i].boost = Math.min(BOOST_CONFIG.MAX_BOOST, players[i].boost + BOOST_CONFIG.BOOST_REGEN_RATE);
       players[i].velX = BOOST_CONFIG.BASE_SPEED * Math.sin(players[i].rot*Math.PI/180);
       players[i].velY = -BOOST_CONFIG.BASE_SPEED * Math.cos(players[i].rot*Math.PI/180);
@@ -107,7 +123,6 @@ function update() {
 }
 
 /* PLAYER CONSTRUCTOR */
-
 function Player(color, xInitial, yInitial, rotInitial, colorPath) {
   this.color = color;
   this.x = xInitial;
@@ -123,14 +138,28 @@ function Player(color, xInitial, yInitial, rotInitial, colorPath) {
   this.boost = BOOST_CONFIG.MAX_BOOST;
   this.isBoosting = false;
   this.isBraking = false;
+  this.isActivelyBoosting = false;
+  
+  // Cache both normal and boost images
+  this.normalCar = new Image();
+  this.normalCar.src = colorPath;
+  
+  // Set boost image based on car color
+  this.boostCar = new Image();
+  if (colorPath.includes("orange")) {
+    this.boostCar.src = "assets/Car_orange_with_boost.png";
+  } else {
+    this.boostCar.src = "assets/Car_blue_with_boost.png";
+  }
+  
   this.draw = function() {
-    var drawing = new Image();
-    drawing.src = colorPath;
+    // Show boost image if actively boosting and has any boost left
+    var currentImage = (this.isActivelyBoosting && this.boost > 0) ? this.boostCar : this.normalCar;
 
     canvas.save();
     canvas.translate(this.xMid, this.yMid);
     canvas.rotate(this.rot*Math.PI/180);
-    canvas.drawImage(drawing, -this.width/2, -this.height/2,this.width,this.height);
+    canvas.drawImage(currentImage, -this.width/2, -this.height/2, this.width, this.height);
     canvas.restore();
   }
 }

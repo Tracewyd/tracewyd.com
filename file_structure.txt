@@ -1,0 +1,83 @@
+.
+├── 404.html
+├── CNAME
+├── README.md
+├── about.html
+├── article1.html
+├── article2.html
+├── articles.html
+├── articletemplate.html
+├── assets
+│   ├── 2000px-Soccer_field_-_empty.svg.png
+│   ├── 2d_white1.png
+│   ├── Car.png
+│   ├── Car_blue.png
+│   ├── Car_orange.png
+│   ├── Planer-Regular-webfont.ttf
+│   ├── RLball.png
+│   ├── ball-hit.ogg
+│   ├── ball-wall-hit.ogg
+│   ├── bluecarwithboost.png
+│   ├── fieldbackground.jpg
+│   ├── game-over.ogg
+│   ├── goal_horn.ogg
+│   ├── goal_impact.ogg
+│   ├── orangecarwithboost.png
+│   ├── ready-set-go.ogg
+│   ├── rocket-league-header.png
+│   ├── rocket_league_2d_ss.png
+│   ├── timer-running-out.ogg
+│   └── two-minute-warning.ogg
+├── css
+│   └── style.css
+├── file_structure.txt
+├── games.html
+├── images
+│   ├── Gmail Logo.jpg
+│   ├── Resume-3.pdf
+│   ├── crossylogo.jpg
+│   ├── cv.jpeg
+│   ├── dinogamelogo.png
+│   ├── distictionsquad.jpeg
+│   ├── gaapic1.jpeg
+│   ├── git logo.png
+│   ├── golfhit.JPG
+│   ├── gymshot1.jpeg
+│   ├── iceland1.JPG
+│   ├── iceland2.jpeg
+│   ├── iceland3.jpeg
+│   ├── iceland4.JPG
+│   ├── instagram.jpg
+│   ├── mygamegit.png
+│   ├── pong.jpg
+│   ├── rocketleague.png
+│   ├── rugby1.jpeg
+│   ├── rugby2.jpeg
+│   ├── rugby3.jpeg
+│   ├── rugby4.jpg
+│   ├── rugby5.jpg
+│   ├── rugger.jpeg
+│   ├── selfie2.JPG
+│   ├── slitherlogo.jpg
+│   ├── vsco.png
+│   ├── websitetest.JPG
+│   └── whiteblank.png
+├── index.html
+├── js
+│   ├── app.js
+│   └── lib
+├── particles.js
+├── particles.json
+├── pong.html
+├── rlcss
+│   └── main.css
+├── rljs
+│   ├── car_wall_collision.js
+│   ├── collisions.js
+│   └── main.js
+├── robots.txt
+├── rocketleague.html
+├── script.js
+└── sitemap.xml
+
+8 directories, 73 files
