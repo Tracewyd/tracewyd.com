@@ -3,13 +3,22 @@ const BOOST_CONFIG = {
   MAX_BOOST: 100,
   BOOST_REGEN_RATE: 0.3,  // Amount of boost regenerated per frame 0.2
   BOOST_USE_RATE: 1,      // Amount of boost used per frame
-  BOOST_FORCE: 6.5,       // Boost strength
+  BOOST_FORCE: 7,       // Boost strength
   MAX_SPEED: 100,           // Maximum speed
   BASE_SPEED: 4,        // Base forward speed
   BRAKE_SPEED: 0.6,       // Speed multiplier when braking (30% of base speed)
   MIN_BOOST_TO_USE: 10,    // Minimum boost required to activate
   BALL_FRICTION: 0.2,     // Ball friction coefficient
   CAR_FRICTION: 0.05      // Car friction coefficient
+};
+
+// Add quick chat configuration
+const QUICK_CHAT = {
+  DISPLAY_TIME: 1000, // Display time in milliseconds
+  ORANGE_ACTIVE: false,
+  BLUE_ACTIVE: false,
+  ORANGE_TIMER: null,
+  BLUE_TIMER: null
 };
 
 // SET CANVAS SIZE AND APPEND TO BODY
@@ -36,6 +45,57 @@ function draw() {
   ball.draw();
   for (var i=0; i<players.length; i++) {
     players[i].draw();
+  }
+  
+  // Draw quick chat messages if active
+  if (QUICK_CHAT.ORANGE_ACTIVE) {
+    drawQuickChat('orange');
+  }
+  if (QUICK_CHAT.BLUE_ACTIVE) {
+    drawQuickChat('blue');
+  }
+}
+
+// Function to draw quick chat messages
+function drawQuickChat(team) {
+  var quickChatImg = new Image();
+  quickChatImg.src = "assets/whatasave.png";
+  
+  if (team === 'orange') {
+    // Top left for orange team
+    canvas.drawImage(quickChatImg, 20, 20, 150, 80);
+  } else {
+    // Top right for blue team
+    canvas.drawImage(quickChatImg, CANVAS_WIDTH - 170, 20, 150, 80);
+  }
+}
+
+// Function to show quick chat message
+function showQuickChat(team) {
+  if (team === 'orange') {
+    // Clear any existing timer
+    if (QUICK_CHAT.ORANGE_TIMER) {
+      clearTimeout(QUICK_CHAT.ORANGE_TIMER);
+    }
+    
+    QUICK_CHAT.ORANGE_ACTIVE = true;
+    
+    // Set timer to hide message after display time
+    QUICK_CHAT.ORANGE_TIMER = setTimeout(function() {
+      QUICK_CHAT.ORANGE_ACTIVE = false;
+    }, QUICK_CHAT.DISPLAY_TIME);
+  } else {
+    // Clear any existing timer
+    if (QUICK_CHAT.BLUE_TIMER) {
+      clearTimeout(QUICK_CHAT.BLUE_TIMER);
+    }
+    
+    QUICK_CHAT.BLUE_ACTIVE = true;
+    
+    // Set timer to hide message after display time
+    QUICK_CHAT.BLUE_TIMER = setTimeout(function() {
+      QUICK_CHAT.BLUE_ACTIVE = false;
+    }, QUICK_CHAT.DISPLAY_TIME);
   }
 }
 
@@ -268,6 +328,8 @@ KeyboardController({
     68: function() { players[0].rot += 10; },
   // S (Brake)
     83: function() { players[0].isBraking = true; },
+  // 1 (What a Save! for Orange)
+    49: function() { showQuickChat('orange'); },
   // PLAYER 2 CONTROLS
   // left
     37: function() { players[1].rot -= 10; },
@@ -277,6 +339,8 @@ KeyboardController({
     39: function() { players[1].rot += 10; },
   // down (Brake)
     40: function() { players[1].isBraking = true; },
+  // 9 (What a Save! for Blue)
+    57: function() { showQuickChat('blue'); },
 }, 50);
 
 // Add key up event listeners
